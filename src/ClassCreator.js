@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "./App.css";
 
-export default function ClassBuilder() {
+export default function ClassCreator() {
   const [form, setForm] = useState({
     title: "",
     date: "",
@@ -54,54 +53,46 @@ export default class_${timestamp};
   };
 
   return (
-    <div className="app-container">
-      <h1 className="app-title">Class Builder</h1>
+    <div className="p-6 max-w-2xl mx-auto grid gap-6">
+      <div className="rounded-2xl shadow p-4 border">
+        <h2 className="text-2xl font-semibold mb-4">Create New Class</h2>
 
-      <div className="card">
-        <label>Title</label>
         <input
-          className="input-field"
+          className="border p-2 rounded w-full"
           name="title"
-          placeholder="Enter Class Title"
+          placeholder="Title"
           onChange={handleChange}
         />
-
-        <label>Date</label>
         <input
-          className="input-field"
+          className="border p-2 rounded w-full"
           name="date"
-          placeholder="Enter Date"
+          placeholder="Date"
           onChange={handleChange}
         />
-
-        <label>Time</label>
         <input
-          className="input-field"
+          className="border p-2 rounded w-full"
           name="time"
-          placeholder="Enter Time"
+          placeholder="Time"
           onChange={handleChange}
         />
 
-        <label>Description</label>
         <textarea
-          className="textarea-field"
+          className="border p-2 rounded w-full"
           name="description"
-          placeholder="Enter Description"
-          rows={6}
+          placeholder="Description"
+          rows={5}
           onChange={handleChange}
         />
 
-        <label>Fees</label>
         <input
-          className="input-field"
+          className="border p-2 rounded w-full"
           name="fees"
-          placeholder="Enter Fees"
+          placeholder="Fees"
           onChange={handleChange}
         />
 
-        <label>Type</label>
-        <div className="radio-group">
-          <label>
+        <div className="flex gap-4 mt-2">
+          <label className="flex gap-2">
             <input
               type="radio"
               name="type"
@@ -111,7 +102,8 @@ export default class_${timestamp};
             />
             Online
           </label>
-          <label>
+
+          <label className="flex gap-2">
             <input
               type="radio"
               name="type"
@@ -123,11 +115,18 @@ export default class_${timestamp};
           </label>
         </div>
 
-        <div className="button-row">
-          <button className="btn preview-btn" onClick={handlePreview}>
+        <div className="flex gap-4 mt-4">
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded"
+            onClick={handlePreview}
+          >
             Preview
           </button>
-          <button className="btn create-btn" onClick={handleCreate}>
+
+          <button
+            className="bg-green-600 text-white px-4 py-2 rounded"
+            onClick={handleCreate}
+          >
             Create Class File
           </button>
         </div>
@@ -135,8 +134,8 @@ export default class_${timestamp};
 
       {preview && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <div className="card preview-card">
-            <h3>Preview</h3>
+          <div className="rounded-2xl shadow p-4 bg-gray-50 border">
+            <h3 className="text-xl font-bold mb-2">Preview</h3>
             <p><strong>Title:</strong> {preview.title}</p>
             <p><strong>Date:</strong> {preview.date}</p>
             <p><strong>Time:</strong> {preview.time}</p>
